@@ -30,6 +30,15 @@ a, a:hover, a:visited {
     left: 0;
     width: 100%;
   }
+
+  @keyframes slide { 
+    0% {
+      top: 200px; 
+    }
+    100% {
+      top: 0px;
+    }
+  }
 }
 
 @import "./typography.scss";
