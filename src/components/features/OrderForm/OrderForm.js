@@ -2,19 +2,26 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {Row, Col} from 'react-flexbox-grid';
 import OrderSummary from './../OrderSummary/OrderSummary';
+import pricing from './../../../data/pricing.json';
+import OrderOption from './../OrderOption/OrderOption';
+import PageTitle from './../../common/PageTitle/PageTitle';
 
-
-
-const OrderForm = ({tripCost, options}) => {
+const OrderForm = ({tripCost, options}) => (
   <Row>
+    {pricing.map(pricingOption => (
+      <Col md={4} key={pricingOption.id}> 
+        <OrderOption {...pricingOption} />
+      </Col>
+    ))}
+    
     <Col xs={12}>
-      {/* <PageTitle text='Trip options' />  --- not defined błą∂ */}
-      <OrderForm tripCost={tripCost} />
-      <OrderSummary options={options} />
+
+      <PageTitle text='Order summary' /> 
+      <OrderSummary options={options} tripCost={tripCost} />
         
-    </Col>;
-  </Row>;
-};
+    </Col>
+  </Row>
+);
 
 
 OrderForm.propTypes = { 

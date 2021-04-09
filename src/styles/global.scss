@@ -24,11 +24,10 @@ a, a:hover, a:visited {
   position: relative;
 
   > :first-child ~ * {
-    animation: 1s ease-in-out;
+    animation: slide 1s;
     position: absolute;
-    top: 0;
-    left: 0;
     width: 100%;
+    left: 0;
   }
 
   @keyframes slide { 

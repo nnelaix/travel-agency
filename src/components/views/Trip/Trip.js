@@ -48,21 +48,23 @@ const Trip = ({error, name, image, cost, days, description, country, intro}) => 
           </Col>
         </Row>
       </Grid>
+     
       <Grid>
-        <PageTitle text={`About ${country.name}`} />
+        <Row>
+          <Col xs={12}>
+            <PageTitle text='Trip options' />
+            <OrderForm tripCost={cost} />
+          </Col>
+        </Row>
       </Grid>
       <DetailsBox>
+        <Grid>
+          <PageTitle text={`About ${country.name}`} />
+        </Grid>
         <DetailsImage>
           <SideImage source={country.flag} />
         </DetailsImage>
-        <Grid>
-          <Row>
-            <Col xs={12}>
-              <PageTitle text='Trip options' />
-              <OrderForm tripCost={cost} />
-            </Col>
-          </Row>
-        </Grid>
+       
         <Grid>
           <Row>
             <Col md={12} lg={4}>
