@@ -5,12 +5,13 @@ import OrderSummary from './../OrderSummary/OrderSummary';
 import pricing from './../../../data/pricing.json';
 import OrderOption from './../OrderOption/OrderOption';
 import PageTitle from './../../common/PageTitle/PageTitle';
+import { setOrderOption } from '../../../redux/orderRedux';
 
 const OrderForm = ({tripCost, options}) => (
   <Row>
-    {pricing.map(pricingOption => (
-      <Col md={4} key={pricingOption.id}> 
-        <OrderOption {...pricingOption} />
+    {pricing.map(option => (
+      <Col md={4} key={option.id}> 
+        <OrderOption {...option}  currentValute={option[option.id]} setOrderOption={setOrderOption} />
       </Col>
     ))}
     
@@ -26,7 +27,8 @@ const OrderForm = ({tripCost, options}) => (
 
 OrderForm.propTypes = { 
   tripCost: PropTypes.string,
-  options: PropTypes.object,
+  options: PropTypes.func,
+  setOrderOption: PropTypes.func,
 };
 
 
