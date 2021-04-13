@@ -9,3 +9,6 @@ export const formatPrice = price => {
         maximumFractionDigits: 0,
       });
 };
+
+
+export default formatPrice;
