@@ -5,7 +5,7 @@ import TripSummary from './TripSummary';
 
 describe('Component TripSummary', () => {
   it('should render without crashing', () => {
-    const component = shallow(<TripSummary id='abc' image='image.jpg' name='name' cost='cost' days='{1}' tags={['tag']} />);
+    const component = shallow(<TripSummary id='abc' image='image.jpg' name='name' cost='cost' days={'1'} tags={['tag']} />);
     expect(component).toBeTruthy();
   });
 
@@ -59,7 +59,7 @@ describe('Component TripSummary', () => {
 
   it('should show error without tags in div', () => {
 
-    const component = shallow(<TripSummary days='{1}' tags={[]} />);
+    const component = shallow(<TripSummary days={'1'} tags={[]} />);
     const checkedDiv = component.find('.tags').exists;
 
     expect(checkedDiv).toEqual(false);
