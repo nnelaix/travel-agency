@@ -12,12 +12,16 @@ describe('Component TripSummary', () => {
   it('should generate correct link', () => {
     const expectedLink = {expectedLink};
     const component = shallow(<TripSummary id={expectedLink} />);
+
+  
+
     expect(component.find('.link').prop('to')).toEqual('/trip/{expectedLink}');
   });
 
   it('should render correct image "src" and "alt" ', () => {
     const expectedImage = 'image.jpg';
     const expectedAlt = 'alt';
+
     const component = shallow(<TripSummary id='test' src={expectedImage} name={expectedAlt} />);
   
     expect(component.find('.image').prop('src')).toEqual(expectedImage);
@@ -29,11 +33,13 @@ describe('Component TripSummary', () => {
     const expectedCost = 'cost';
     const expectedDays = '1';
 
+
     const component = shallow(<TripSummary name={expectedName} cost={expectedCost} days={expectedDays} />);
 
     // const renderedName = component.find('.name').at();
     // const renderedCost = component.find('').at();
     // const expectedDays = component.find('').at().
+
 
     expect(component.renderedName).toEqual(expectedName);
     expect(component.renderedCost).toEqual({expectedCost});
@@ -43,6 +49,7 @@ describe('Component TripSummary', () => {
   it('should render correct tag', () => {
     const expectedTags = ['1', '2', '3'];
     const tag = [];
+
     const component = shallow(<TripSummary tags={['1', '2', '3']} />);
 
     const renderTag = component.find('tag').at(tag);
@@ -51,6 +58,7 @@ describe('Component TripSummary', () => {
   });
 
   it('should show error without tags in div', () => {
+
     const component = shallow(<TripSummary days='{1}' tags={[]} />);
     const checkedDiv = component.find('.tags').exists;
 
