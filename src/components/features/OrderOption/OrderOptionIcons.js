@@ -13,6 +13,7 @@ const OrderOptionIcons = ({values, required, currentValue, setOptionValue}) => (
         <Icon name='times-circle' /> none
       </div>
     )}
+  
     
     {values.map(value => (
       <div className={value.id == currentValue ? '${styles.icon} ${styles.iconActive}' : styles.icon} 
@@ -29,7 +30,7 @@ OrderOptionIcons.propTypes = {
   setOptionValue: PropTypes.func,
   required: PropTypes.bool,
   values: PropTypes.array,
-  currentValue: PropTypes.array,
+  currentValue: PropTypes.string,
 };
 
 export default OrderOptionIcons;
