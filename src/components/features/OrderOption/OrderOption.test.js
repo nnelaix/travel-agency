@@ -109,11 +109,14 @@ for(let type in optionTypes){
       }
       case 'icons': {
         it('contains div with icon', () =>{
-          const div = renderedSubcomponent.find('.icon');
-          expect(div.length).toBe(mockProps.values.length);
-
-          const iconActive = renderedSubcomponent.find('.iconActive');
-          expect(iconActive.length).toBe(1);
+          const icons = renderedSubcomponent.find('.icon');
+          expect(icons.length).toBe(3);
+  
+          //const epmtyIcon = icons.find('div[value=""]');
+          //expect(emptyIcon.length).toBe(0);
+      
+          const active = icons.find('.iconActive');
+          expect(active.length).toBe(mockProps.values.length);
         });
         it('should render setOrderOption function on change', () => {
           renderedSubcomponent.find('.icon').last().simulate('click');
@@ -125,20 +128,21 @@ for(let type in optionTypes){
       // ** 
       case 'checkboxes': {
         it('contains div with class checkboxes and input checkbox', () => {
-          const div = renderedSubcomponent.find('input[type="checkbox"]');
-          expect(div.length).toBe(mockProps.values.length);
+          const div = renderedSubcomponent.find('.checkboxes');
+          expect(div.length).toBe(1);
 
-          const options = div.find('option');
-          expect(options.length).toBe(mockProps.values.length);
-          expect(options.at(0).prop('value')).toBe(mockProps.values[0].id);
-          expect(options.at(1).prop('value')).toBe(mockProps.values[1].id);
-      
+
+          const input = div.find('input[type="checkbox"]');
+          expect(input.length).toBe(mockProps.values.length);
+
+          expect(input.at(0).prop('value')).toBe(mockProps.values[0].id);
+          expect(input.at(1).prop('value')).toBe(mockProps.values[1].id);
         });
-
-        it('should render setOrderOption function on change', () => {
-          renderedSubcomponent.find('input[type="checkbox"]').simulate('change', {currentTarget: {checked: true}});
+ 
+        it('should run setOrderOption function on change', () => {
+          renderedSubcomponent.find('input[value="{testValue}"]').last().simulate('change', {currentTarget: {checked: true}});
           expect(mockSetOrderOption).toBeCalledTimes(1);
-          expect(mockSetOrderOption).toBeCalledWith({ [mockProps.id]: testValue });
+          expect(mockSetOrderOption).toBeCalledWith({ [mockProps.id]: [mockProps.currentValue, testValue] });
         });
         break;
       }
