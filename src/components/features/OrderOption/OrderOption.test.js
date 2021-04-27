@@ -112,11 +112,8 @@ for(let type in optionTypes){
           const icons = renderedSubcomponent.find('.icon');
           expect(icons.length).toBe(3);
   
-          //const epmtyIcon = icons.find('div[value=""]');
-          //expect(emptyIcon.length).toBe(0);
-      
           const active = icons.find('.iconActive');
-          expect(active.length).toBe(mockProps.values.length);
+          expect(active.length).toBe(1);
         });
         it('should render setOrderOption function on change', () => {
           renderedSubcomponent.find('.icon').last().simulate('click');
@@ -131,7 +128,6 @@ for(let type in optionTypes){
           const div = renderedSubcomponent.find('.checkboxes');
           expect(div.length).toBe(1);
 
-
           const input = div.find('input[type="checkbox"]');
           expect(input.length).toBe(mockProps.values.length);
 
@@ -140,7 +136,7 @@ for(let type in optionTypes){
         });
  
         it('should run setOrderOption function on change', () => {
-          renderedSubcomponent.find('input[value="{testValue}"]').last().simulate('change', {currentTarget: {checked: true}});
+          renderedSubcomponent.find(`input[value="${testValue}"]`).last().simulate('change', {currentTarget: {checked: true}});
           expect(mockSetOrderOption).toBeCalledTimes(1);
           expect(mockSetOrderOption).toBeCalledWith({ [mockProps.id]: [mockProps.currentValue, testValue] });
         });

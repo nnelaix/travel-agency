@@ -23,6 +23,7 @@ const OrderOptionCheckboxes = ({values, currentValue, setOptionValue}) => (
         <input type='checkbox' 
           checked={currentValue.includes(value.id) ? true : false }         
           onChange={event => setOptionValue(newValueSet(currentValue, value.id, event.currentTarget.checked))}
+          value={value.id}
         />
         {value.name} ({formatPrice(value.price)})
       </label>
