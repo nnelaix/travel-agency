@@ -2,18 +2,16 @@ import React from 'react';
 import {shallow} from 'enzyme';
 import TripSummary from './TripSummary';
 
-
 describe('Component TripSummary', () => {
   it('should render without crashing', () => {
     const component = shallow(<TripSummary id='abc' image='image.jpg' name='name' cost='cost' days={1} tags={['tag']} />);
     expect(component).toBeTruthy();
   });
 
-  it('should generate correct link', () => {
+  it('should generate the correct link', () => {
     const expectedLink = 'abc';
     const linkId = '/trip/abc';
     const component = shallow(<TripSummary id={expectedLink} />);
-
 
     expect(component.find('.link').prop('to')).toEqual(linkId);
   });
